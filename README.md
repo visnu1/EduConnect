@@ -43,5 +43,5 @@ This directory contains sample data files that can be imported into your databas
 ## How to Clone the Repository
 To get started with this repository, clone it using the following command:
 ```bash
-git clone <repository_url>
+git clone https://github.com/visnu1/EduConnect.git
 ```
