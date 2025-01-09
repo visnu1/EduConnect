@@ -1,0 +1,53 @@
+<div class="title">
+    <h1>
+        Write a Review
+    </h1>
+</div>
+<div style="display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;">
+    <div style="width: 900px;">
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Choose Professor</mat-label>
+                <mat-select (selectionChange)="onSearch($event)">
+                    <mat-option *ngFor="let course of courses" [value]="course?.professorId">
+                        {{course?.professorName | titlecase}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="reviews">
+        <div class="review-item" *ngFor="let item of allReviews">
+            {{item.review}}
+        </div>
+    </div>
+    <div style="width: 900px;
+    padding: 20px;">
+        <mat-card class="m-2" *ngFor="let item of questions; index as i">
+            <mat-card-content>
+                <div style="display: flex;
+                justify-content: space-between;
+                align-items: center;">
+                    <div>
+                        {{i + 1}}. {{item.question}}
+                    </div>
+                    <div>
+                        <mat-slider class="example-margin" [max]=5 min=0 [discrete]="true">
+                            <input matSliderThumb [(ngModel)]="item.value">
+                        </mat-slider>
+                        {{item?.value}}
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <label class="mx-2" for="txtAra">Write a Review</label>
+        <textarea id="txtAra" class="m-2 w-100" style="height: 150px;" matInput
+            [(ngModel)]="shortTextReview"></textarea>
+        <button class="my-3" color="primary" mat-raised-button (click)="onSubmit()">Submit</button>
+    </div>
+
+</div>
+
+<!-- font-family: 'Smooch', cursive; -->

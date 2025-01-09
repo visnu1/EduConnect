@@ -1,0 +1,47 @@
+<div class="title">
+    <h1 style="flex: 1;">Campus Care</h1>
+    <div class="manage-services">
+        <button class="mx-2" mat-stroked-button (click)="myOrders()">My Orders</button>
+        <button mat-icon-button>
+            <mat-icon class="material-symbols-outlined align-top" matBadgeSize="small" [matBadge]="cartItems.length"
+                matBadgeColor="warn" [matBadgeHidden]="cartItems.length == 0">shopping_cart</mat-icon>
+        </button>
+    </div>
+</div>
+<div class="category">
+    <div *ngFor="let category of categories">
+        <div class="py-4 mx-5">
+            <h3 class="sub-title">{{ category | titlecase }}</h3>
+        </div>
+        <ul class="prod_items px-4">
+            <li class="text-center d-flex" style="flex-direction: column;" *ngFor="let product of products[category]">
+                <div>{{product.name | titlecase}}</div>
+                <div class="prod_item">
+                    <img class="img-thumbnail p-4" [src]="product.image" alt="">
+                </div>
+                <button class="my-2 add-btn" mat-stroked-button (click)="addProduct(product)"
+                    [disabled]="product.inCart" ng-disabled="product.inCart">Add</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="m-5">
+    <div>
+        <small>Assets from <a href="Freepix">Freepix</a></small>
+    </div>
+    <button class="float-end" mat-raised-button color="primary" (click)="onCheckout()">Checkout</button>
+</div>
+
+<dialog id="orderDialog">
+    <h2>Order Details</h2>
+    <div *ngFor="let order of myOrdersArr?.Items" style="border-top: 1px solid silver;">
+        <p><strong>Order ID:</strong> {{ order.orderId }}</p>
+        <p><strong>Student ID:</strong> {{ order.studentId }}</p>
+        <p><strong>Created At:</strong> {{ order.createdAt | date: 'short' }}</p>
+        <div *ngFor="let detail of order.orderDetails">
+            <img [src]="detail.image" alt="Item" style="width:100px; height:auto;">
+            <p>Item ID: {{ detail.itemId }}</p>
+        </div>
+    </div>
+    <button mat-raised-button (click)="closeDialog()">Close</button>
+</dialog>

@@ -1,0 +1,67 @@
+<div>
+    <div class="identifier">
+        <div *ngIf="selectedOpt" style="flex:1" class="text-center">
+            <span>Logged In As {{student?.name | titlecase}}</span> &#40;<span
+                class="mx-2">{{student?.email}}</span>&#41;
+        </div>
+        <div *ngIf="selectedOpt">
+            <button mat-button (click)="onLogout()" style="color: white; border: 1px solid white; height: 28px;">
+                Logout
+            </button>
+        </div>
+        <div *ngIf="!selectedOpt" class="w-100 text-center">
+            <select (change)="onStudentSelected()" [(ngModel)]="selectedOpt">
+                <option *ngFor="let student of students.rows" [ngValue]="student">{{student?.name | titlecase}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="m-5">
+    <div>
+        <h1>Student Services</h1>
+    </div>
+    <ul>
+        <li>
+            <div>
+                <a routerLink="/registration">Registration</a>
+            </div>
+        </li>
+        <li>
+            <div>
+                <a routerLink="/campus-care">Campus Care</a>
+            </div>
+        </li>
+        <li>
+            <div>
+                <a routerLink="/reviews">Reviews</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="student?.id" class="m-5">
+    <h3>Student Courses</h3>
+    <div class="w-100 text-center" *ngIf="!studentCourses.length">
+        No Courses selected
+    </div>
+    <div *ngIf="studentCourses.length" class="table-ctn">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="th-td">#</th>
+                <th scope="col" class="th-td">Course Name</th>
+                <th scope="col" class="th-td">Professor Name</th>
+                <th scope="col" class="th-td">Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let course of studentCourses; let i=index">
+                <th class="tb-td" scope="row">{{i+1}}</th>
+                <td class="tb-td">{{course.courseName | titlecase}}</td>
+                <td class="tb-td">{{course.professorName}}</td>
+                <td class="tb-td">{{course.day | titlecase}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

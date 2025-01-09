@@ -1,0 +1,104 @@
+[
+    {
+        "majorId": "0d4968bc-1439-4b6a-b312-2a6c28e42c93",
+        "majorName": "Computer Science",
+        "courseId": "2290f332-3c32-48b7-a48e-b9944d7b0c90",
+        "courseName": "DBA SEMINAR II"
+    },
+    {
+        "majorId": "0d4968bc-1439-4b6a-b312-2a6c28e42c93",
+        "majorName": "Computer Science",
+        "courseId": "20560830-1d05-4a91-9fbe-f425b7d717fb",
+        "courseName": "ADVANCED ROBOTICS"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "e601921d-58e9-468e-8106-17882bd39b55",
+        "courseName": "IT STRATEGY"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "d7f49f7a-59cc-4dc2-8436-481d4d7a99af",
+        "courseName": "MITA CAPSTONE PROJECT"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "c5dccbbe-eb4e-45ef-9366-b205b27d741b",
+        "courseName": "DATA ANALYSIS AND VISUALIZATION"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "c579d2fd-7f88-44fe-83e9-0bbdaa745106",
+        "courseName": "CAREER MGMT - MITA"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "96eadf3f-a3b2-41de-b9db-eac5a44fe5b0",
+        "courseName": "SP TPC: ALGORITHMIC MACHINE LEARNING"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "87cb8d3b-bb97-45fe-b8c9-2cbb4c3940e9",
+        "courseName": "SPECIAL TOPICS: GAME THEORETIC METHODS FOR STRATEGIC DECISION MAKING"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "7b0ec3ac-4ec9-4ed9-971b-72fdc068a951",
+        "courseName": "SP TPC: INTRODUCTION TO DATA STRUCTURES & ALGORITHMS"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "716a9f6f-c363-4f20-a8cc-65c4df26a2dd",
+        "courseName": "BUSINESS FORECASTING"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "585ea85a-7ebd-4ff9-a698-4cd6a20a8e24",
+        "courseName": "SP TPC: ADV DATABASE SYS"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "57d9244d-b401-483a-82a3-515041b195f0",
+        "courseName": "MITA INTERNSHIP"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "512a551c-6b24-494e-8ec9-1195ec8bfc2e",
+        "courseName": "ANALYTICS FOR BUSINESS INTELLIGENCE"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "49ca8fa5-2679-4761-bcae-a3e048e3d35e",
+        "courseName": "DATA MINING"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "404a5d01-8e97-4e9f-8c3d-cae032c378a8",
+        "courseName": "BUSINESS DATA MANAGEMENT"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "32ab8faf-5c2c-4501-b6ad-26f711e19af8",
+        "courseName": "INFORMATION SECURITY"
+    },
+    {
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "majorName": "Information Technology",
+        "courseId": "1f0c3403-5b53-45de-bf1a-3720096615e3",
+        "courseName": "INTRO SOFTWARE DEV"
+    }
+]

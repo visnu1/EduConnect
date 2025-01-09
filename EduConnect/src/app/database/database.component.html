@@ -1,0 +1,160 @@
+<div>
+    <div>
+        <h1>Databases</h1>
+    </div>
+    <div class="m-5">
+        <div>
+            <h2>Students Table</h2>
+        </div>
+        <div class="border-top border-end border-start">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" *ngFor="let column of students.columns">
+                            <span *ngIf="column != 'id'">{{column}}</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of students.rows, let i = index;">
+                        <th scope="row" ng-for>{{i + 1}}</th>
+                        <td *ngFor="let column of students.columns">
+                            <span *ngIf="column != 'id'">{{row[column]}}</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="m-5">
+        <div>
+            <h2>Professors Table</h2>
+        </div>
+        <div class="border-top border-end border-start">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" *ngFor="let column of professors.columns">
+                            <span *ngIf="column != 'id'">{{column}}</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of professors.rows, let i = index;">
+                        <th scope="row" ng-for>{{i + 1}}</th>
+                        <td *ngFor="let column of professors.columns">
+                            <span *ngIf="column != 'id'">{{row[column]}}</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="m-5">
+        <div>
+            <h2>Courses Table</h2>
+        </div>
+        <div class="border-top border-end border-start">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" *ngFor="let column of courses.columns">
+                            <span *ngIf="column != 'id'">{{column}}</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of courses.rows, let i = index;">
+                        <th scope="row" ng-for>{{i + 1}}</th>
+                        <td *ngFor="let column of courses.columns">
+                            <span *ngIf="column != 'id'">{{row[column]}}</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="m-5">
+        <div>
+            <h2>Majors Table</h2>
+        </div>
+        <div class="border-top border-end border-start">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" *ngFor="let column of majors.columns">
+                            <span *ngIf="column != 'id'">{{column}}</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of majors.rows, let i = index;">
+                        <th scope="row" ng-for>{{i + 1}}</th>
+                        <td *ngFor="let column of majors.columns">
+                            <span *ngIf="column != 'id'">{{row[column]}}</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="m-5">
+        <div>
+            <h2>Major-Courses Table</h2>
+        </div>
+        <div class="border-top border-end border-start">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" *ngFor="let column of majorCourses.columns">
+                            <span *ngIf="column != 'id'">{{column}}</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of majorCourses.rows, let i = index;">
+                        <th scope="row" ng-for>{{i + 1}}</th>
+                        <td *ngFor="let column of majorCourses.columns">
+                            <span *ngIf="column != 'id'">{{row[column]}}</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="m-5">
+        <div>
+            <h2>Student Enrollment Table</h2>
+        </div>
+        <div class="border-top border-end border-start">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" *ngFor="let column of studentEnrollments.columns">
+                            <span *ngIf="column != 'id'">{{column}}</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of studentEnrollments.rows, let i = index;">
+                        <th scope="row" ng-for>{{i + 1}}</th>
+                        <td *ngFor="let column of studentEnrollments.columns">
+                            <span *ngIf="column != 'id'">{{row[column]}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

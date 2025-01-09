@@ -1,0 +1,68 @@
+<mat-card class="h-100 py-5 px-2">
+    <mat-card-header style="justify-content: center;" class="mb-5">
+        <mat-card-title>
+            <h1>{{'Register a course to study' | titlecase}}</h1>
+        </mat-card-title>
+    </mat-card-header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mb-4">
+                <input matInput type="text" placeholder="Search" [formControl]="searchField">
+            </div>
+            <div class="table-ctn p-0">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="th-td">Major</th>
+                            <th class="th-td">Course Name</th>
+                            <th class="th-td">Professor</th>
+                            <th class="th-td">Location</th>
+                            <th class="th-td">Credits</th>
+                            <th class="th-td">Status</th>
+                            <th class="th-td">Day & Time</th>
+                            <th class="th-td"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let course of courses">
+                            <td class="tb-td">
+                                <div>{{course.majorName | titlecase}}</div>
+                            </td>
+                            <td style="max-width: 200px;">
+                                <div>{{course.courseName | titlecase}}</div>
+                            </td>
+                            <td class="tb-td">
+                                {{course.professorName}}
+                            </td>
+                            <td class="tb-td">
+                                {{course.campusLocation}}
+                            </td>
+                            <td class="tb-td">
+                                {{course.credits}}
+                            </td>
+                            <td class="tb-td">
+                                <ng-container *ngIf="course.maxStudents; else elseTemplate">
+                                    <mat-chip style="width: 68px !important;"
+                                        style="background-color: #34d188;">Open</mat-chip>
+                                </ng-container>
+                                <ng-template #elseTemplate>
+                                    <mat-chip color="warn">Closed</mat-chip>
+                                </ng-template>
+                            </td>
+                            <td class="tb-td">
+                                <span>{{course.day}}</span>
+                                <br>
+                                <span class="mx-1" *ngIf="course.startTime">{{course.startTime}}</span> -
+                                <span class="mx-1" *ngIf="course.endTime">{{course.endTime}}</span>
+                            </td>
+                            <td class="tb-td">
+                                <button mat-stroked-button (click)="onRegister(course.courseId)"
+                                    [disabled]="!course.maxStudents">Register</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</mat-card>
