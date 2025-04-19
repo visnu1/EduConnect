@@ -1,0 +1,122 @@
+[
+    {
+        "id": "00d4a6bf-7789-4948-ba63-603f7c37fc06",
+        "name": "Dr. Alexander Johnson",
+        "email": "alexander.johnson@outlook.com",
+        "title": "Professor",
+        "officeHours": "Tuesday and Thursday 10:00 AM - 12:00 PM",
+        "phoneNumber": "012-345-6789"
+    },
+    {
+        "id": "1dadabfc-40fd-49d7-9bd3-e771a8e3c257",
+        "name": "Dr. SURAL, SHAMIK",
+        "email": "shamik.sural@outlook.com",
+        "title": "Assistant Professor",
+        "officeHours": "Tuesday and Thursday 2:00 PM - 4:00 PM",
+        "phoneNumber": "678-901-2345"
+    },
+    {
+        "id": "2e9bc584-22a5-4cd6-a008-74f6fbb0e8bf",
+        "name": "Dr. Olivia Smith",
+        "email": "olivia.smith@outlook.com",
+        "title": "Associate Professor",
+        "officeHours": "Monday and Wednesday 1:00 PM - 3:00 PM",
+        "phoneNumber": "123-456-7890"
+    },
+    {
+        "id": "2eb02950-dff5-45e1-a76b-0700cda116d1",
+        "name": "Dr. Sophia Davis",
+        "email": "sophia.davis@outlook.com",
+        "title": "Professor",
+        "officeHours": "Monday and Wednesday 3:00 PM - 5:00 PM",
+        "phoneNumber": "345-678-9012"
+    },
+    {
+        "id": "34d58b98-6976-45ae-82b7-586747c8ccba",
+        "name": "Dr. Ava Martinez",
+        "email": "ava.martinez@outlook.com",
+        "title": "Assistant Professor",
+        "officeHours": "Monday and Wednesday 2:00 PM - 4:00 PM",
+        "phoneNumber": "567-890-1234"
+    },
+    {
+        "id": "5b22494f-b93c-40f3-9f96-57c0378e6333",
+        "name": "Dr. LIDBETTER",
+        "email": "lidbetter@outlook.com",
+        "title": "Professor",
+        "officeHours": "Monday and Wednesday 10:00 AM - 12:00 PM",
+        "phoneNumber": "123-456-7890"
+    },
+    {
+        "id": "61c22d69-79bc-45ef-a737-0fb8ec7e078f",
+        "name": "Dr. Ethan Miller",
+        "email": "ethan.miller@outlook.com",
+        "title": "Associate Professor",
+        "officeHours": "Tuesday and Thursday 4:00 PM - 6:00 PM",
+        "phoneNumber": "456-789-0123"
+    },
+    {
+        "id": "7d1192ae-ca3e-4df4-9465-f982c3f59786",
+        "name": "Dr. PAPADIMITRIOU",
+        "email": "papadimitriou@outlook.com",
+        "title": "Professor",
+        "officeHours": "Tuesday and Thursday 10:00 AM - 12:00 PM",
+        "phoneNumber": "456-789-0123"
+    },
+    {
+        "id": "a7406baf-1cc1-49e8-8d59-ba95268598c2",
+        "name": "Dr. ILANI, WAJAHAT",
+        "email": "wajahat.gilani@outlook.com",
+        "title": "Associate Professor",
+        "officeHours": "Monday and Wednesday 1:00 PM - 3:00 PM",
+        "phoneNumber": "567-890-1234"
+    },
+    {
+        "id": "bf126649-f543-416a-8d5a-7e4fb39d3c17",
+        "name": "Dr. ORDILLE, JOANN",
+        "email": "joann.ordille@outlook.com",
+        "title": "Professor",
+        "officeHours": "Monday and Wednesday 3:00 PM - 5:00 PM",
+        "phoneNumber": "789-012-3456"
+    },
+    {
+        "id": "c5e0a0ea-ad4a-4bf7-ac39-ad195b75cf15",
+        "name": "Dr. Benjamin Lee",
+        "email": "teacher.eight@outlook.com",
+        "title": "Assistant Professor",
+        "officeHours": "Tuesday and Thursday 3:00 PM - 5:00 PM",
+        "phoneNumber": "890-123-4567"
+    },
+    {
+        "id": "c8a4a162-2836-4543-a842-e6132a83be7e",
+        "name": "Dr. HADDADAN",
+        "email": "haddadan@outlook.com",
+        "title": "Associate Professor",
+        "officeHours": "Monday and Wednesday 2:00 PM - 4:00 PM",
+        "phoneNumber": "345-678-9012"
+    },
+    {
+        "id": "cd113e9c-589e-415b-aba4-37f1057471ae",
+        "name": "Dr. Emily Brown",
+        "email": "teacher.nine@outlook.com",
+        "title": "Professor",
+        "officeHours": "Monday and Wednesday 4:00 PM - 6:00 PM",
+        "phoneNumber": "901-234-5678"
+    },
+    {
+        "id": "e57851bd-29f3-4517-ba11-d3e01b301447",
+        "name": "Dr. Michael Turner",
+        "email": "michael.turner@outlook.com",
+        "title": "Associate Professor",
+        "officeHours": "Tuesday and Thursday 2:00 PM - 4:00 PM",
+        "phoneNumber": "234-567-8901"
+    },
+    {
+        "id": "e8df1856-b484-453c-a161-bd032db16556",
+        "name": "Dr. QU, MENG",
+        "email": "meng.qu@outlook.com",
+        "title": "Associate Professor",
+        "officeHours": "Tuesday and Thursday 1:00 PM - 3:00 PM",
+        "phoneNumber": "234-567-8901"
+    }
+]

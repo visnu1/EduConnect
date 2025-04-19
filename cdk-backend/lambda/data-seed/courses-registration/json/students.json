@@ -1,0 +1,102 @@
+[
+    {
+        "id": "14d090a1-69a2-4676-910d-d25d3afd3307",
+        "name": "vishnu",
+        "email": "vishnu840ranjan@gmail.com",
+        "dob": "1996-01-03T00:00:00.000Z",
+        "phoneNumber": "6361235353",
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "creditsCompleted": 0,
+        "status": "active"
+    },
+    {
+        "id": "1532527a-fa58-4acb-9c4e-58e65e464429",
+        "name": "Alexander Smith",
+        "email": "alex.smith@gmail.com",
+        "dob": "1991-06-12T00:00:00.000Z",
+        "phoneNumber": "1234567890",
+        "majorId": "0d4968bc-1439-4b6a-b312-2a6c28e42c93",
+        "creditsCompleted": 0,
+        "status": "active"
+    },
+    {
+        "id": "255c2e3d-1f31-4b27-b587-e8be6792c8e8",
+        "name": "Mikhail Pett",
+        "email": "mikhail.petrov@gmail.com",
+        "dob": "1992-04-03T00:00:00.000Z",
+        "phoneNumber": "5678901234",
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "creditsCompleted": 0,
+        "status": "active"
+    },
+    {
+        "id": "3f8027d1-6eae-4e71-b9ce-3b648bd8c43e",
+        "name": "Arjun Desai",
+        "email": "arjun.desai@gmail.com",
+        "dob": "1997-02-18T00:00:00.000Z",
+        "phoneNumber": "5432109876",
+        "majorId": "0d4968bc-1439-4b6a-b312-2a6c28e42c93",
+        "creditsCompleted": 0,
+        "status": "active"
+    },
+    {
+        "id": "7908f335-74e2-4a1d-9a1b-4ff7b41116ca",
+        "name": "Aditi Sharma",
+        "email": "aditi.sharma@gmail.com",
+        "dob": "1998-04-22T00:00:00.000Z",
+        "phoneNumber": "8765432109",
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "creditsCompleted": 0,
+        "status": "active"
+    },
+    {
+        "id": "8ebfde63-1886-48b9-b78e-c562cd0485c1",
+        "name": "Neha Kapoor",
+        "email": "neha.kapoor@gmail.com",
+        "dob": "1990-07-05T00:00:00.000Z",
+        "phoneNumber": "6543210987",
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "creditsCompleted": 0,
+        "status": "active"
+    },
+    {
+        "id": "c65f318a-c71e-4525-a97c-8cf5c70dfc95",
+        "name": "Sanya Gupta",
+        "email": "sanya.gupta@gmail.com",
+        "dob": "1994-09-30T00:00:00.000Z",
+        "phoneNumber": "4321098765",
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "creditsCompleted": 0,
+        "status": "active"
+    },
+    {
+        "id": "e55b0051-56b5-4ea4-ad72-5e81a61f2b29",
+        "name": "Lavanya",
+        "email": "lavanya@gmail.com",
+        "dob": "1996-01-03T00:00:00.000Z",
+        "phoneNumber": "6361235353",
+        "majorId": "bb74648e-161b-4505-b993-ff163add8129",
+        "creditsCompleted": 0,
+        "status": "active"
+    },
+    {
+        "id": "ed585572-2b1a-44da-926c-bc5cc6f3f165",
+        "name": "Vikram Singh",
+        "email": "vikram.singh@gmail.com",
+        "dob": "1993-11-15T00:00:00.000Z",
+        "phoneNumber": "7654321098",
+        "majorId": "0d4968bc-1439-4b6a-b312-2a6c28e42c93",
+        "creditsCompleted": 0,
+        "status": "active"
+    },
+    {
+        "id": "fbb62b7b-3df5-40a0-8be4-70d50dcd5028",
+        "name": "Sophia Brown",
+        "email": "sophia.brown@gmail.com",
+        "dob": "1999-01-08T00:00:00.000Z",
+        "phoneNumber": "4567890123",
+        "majorId": "0d4968bc-1439-4b6a-b312-2a6c28e42c93",
+        "creditsCompleted": 0,
+        "status": "active"
+    }
+]
