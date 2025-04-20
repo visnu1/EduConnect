@@ -3,7 +3,7 @@ name: Deploy Edu-Connect frontend
 on:
     push:
         branches: 
-            - main
+            - frontend
 
 jobs:
     build-and-deploy:
