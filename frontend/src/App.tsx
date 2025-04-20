@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -31,38 +31,11 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path='login' element={<Login />} />
-            <Route
-              path='/home'
-              element={
-                <AuthGuard>
-                  <Dashboard />
-                </AuthGuard>
-              }
-            />
-            <Route
-              path="courses/*"
-              element={
-                <AuthGuard>
-                  <CourseBoard />
-                </AuthGuard>
-              }
-            />
-            <Route
-              path="pantry/*"
-              element={
-                <AuthGuard>
-                  <PantryPal />
-                </AuthGuard>
-              }
-            />
-            <Route
-              path='review'
-              element={
-                <AuthGuard>
-                  <ProfessorReview />
-                </AuthGuard>
-              }
-            />
+            <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route path='/home' element={<AuthGuard><Dashboard /></AuthGuard>} />
+            <Route path="courses/*" element={<AuthGuard><CourseBoard /></AuthGuard>} />
+            <Route path="pantry/*" element={<AuthGuard><PantryPal /></AuthGuard>} />
+            <Route path='review' element={<AuthGuard><ProfessorReview /></AuthGuard>} />
             {/* Route for handling unmatched paths */}
             <Route path="*" element={<NotFound />} />
           </Routes>
