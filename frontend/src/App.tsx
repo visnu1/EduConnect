@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react';
 import './App.css';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -26,7 +26,7 @@ const CourseBoard = lazy(() =>
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
@@ -41,7 +41,7 @@ function App() {
           </Routes>
         </Suspense>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
