@@ -2,7 +2,6 @@ import { ArrowRight, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import campusImg from '../assets/campus-1.jpg'
 import { getStudents } from "../services/api";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/AuthProvider";
 import { Student } from "../interfaces/Student";
 
