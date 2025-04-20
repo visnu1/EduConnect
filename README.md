@@ -1,6 +1,6 @@
 # EduConnect App (Microservice application)
 
-🌐 Live Demo: [https://educonnect.com](https://educonnect.com)  
+🌐 Live Demo: [https://visnu1.github.io/EduConnect/](https://visnu1.github.io/EduConnect/)  
 
 Welcome to the **EduConnect** repository! This repository is structured into multiple directories, each serving a specific purpose. Below is a detailed description of each directory and its contents.
 
