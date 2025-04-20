@@ -1,4 +1,4 @@
-import { Plus, Search, ShoppingCart, X } from "lucide-react";
+import { Search, ShoppingCart, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getProducts, registerOrder } from "../../../services/api";
 import { useAuth } from "../../../hooks/AuthProvider";
