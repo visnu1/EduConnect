@@ -5,16 +5,12 @@ import { DynamoDBDocumentClient, GetCommand, ScanCommand, DeleteCommand } from "
 const client = new DynamoDBClient({ region: process.env.REGION || 'us-east-1' });
 const documentClient = DynamoDBDocumentClient.from(client);
 
-
+const allowedOrigins = process.env.ALLOW_ORIGINS?.split(',') || [];
 const TABLE_NAME = process.env.TABLE_NAME || 'Products';
-const HEADERS = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "*",
-    "Content-Type": "application/json"
-};
 
 
 export const handler = async (event) => {
+    const origin = event.headers.origin;
     const { httpMethod, path, queryStringParameters, body, pathParameters } = event;
     const productId = pathParameters?.id;
 
@@ -27,19 +23,19 @@ export const handler = async (event) => {
                         Key: { itemId: pathParameters.id }
                     });
                     const { Item } = await documentClient.send(command);
-                    return response(200, { message: "Product queried successfully", results: Item || {} });
+                    return response(origin, 200, { message: "Product queried successfully", results: Item || {} });
                 }
                 const command = new ScanCommand({ TableName: TABLE_NAME });
                 const { Items } = await documentClient.send(command);
-                return response(200, { message: "Products queried successfully", results: Items });
+                return response(origin, 200, { message: "Products queried successfully", results: Items });
 
             case "PUT":
 
-                if (!productId) return response(400, { message: "Missing product ID" });
+                if (!productId) return response(origin, 400, { message: "Missing product ID" });
 
                 const updatedFields = JSON.parse(body);
                 if (!Object.keys(updatedFields).length)
-                    return response(400, { message: "No fields to update" });
+                    return response(origin, 400, { message: "No fields to update" });
 
                 // Updating the fields
                 const updateExpressions = Object.keys(updatedFields).map((key) => `#${key} = :${key}`).join(", ");
@@ -54,27 +50,33 @@ export const handler = async (event) => {
                     ExpressionAttributeValues: expressionAttributeValues,
                     ReturnValues: "ALL_NEW"
                 }));
-                return response(200, { message: "Product updated successfully", updatedProduct: updateResult.Attributes });
+                return response(origin, 200, { message: "Product updated successfully", updatedProduct: updateResult.Attributes });
 
             case "DELETE":
-                if (!productId) return response(400, { message: "Missing product ID" });
+                if (!productId) return response(origin, 400, { message: "Missing product ID" });
                 await documentClient.send(new DeleteCommand({
                     TableName: TABLE_NAME,
                     Key: { itemId: productId }
                 }));
-                return response(200, { message: "Product deleted successfully" });
+                return response(origin, 200, { message: "Product deleted successfully" });
 
             default:
-                return response(404, { message: "Route or method not supported" });
+                return response(origin, 404, { message: "Route or method not supported" });
         }
     } catch (error) {
         console.error("Error: ", error);
-        return response(500, { message: "Internal server error", error: error.message });
+        return response(origin, 500, { message: "Internal server error", error: error.message });
     }
 };
 
-
-
-function response(statusCode, body) {
-    return { statusCode, headers: HEADERS, body: JSON.stringify(body) };
+function response(origin, statusCode, body) {
+    return {
+        statusCode,
+        body: JSON.stringify(body),
+        headers: {
+            "Access-Control-Allow-Origin": allowedOrigins.includes(origin) ? origin : "",
+            "Access-Control-Allow-Methods": "*",
+            "Content-Type": "application/json"
+        }
+    };
 }

@@ -14,7 +14,7 @@ const app = new cdk.App();
 const educonnectCdkAppStack = new EduconnectCdkAppStack(app, 'EduconnectCdkAppStack');
 
 // Individual Application Stacks
-const pantryAppStack = new StudentPantryAppStack(app, 'StudentPantryAppStack');
+const pantryAppStack = new StudentPantryAppStack(app, 'StudentPantryAppStack', { config });
 pantryAppStack.addDependency(educonnectCdkAppStack);
 
 const courseRegistrationAppStack = new StudentCourseRegistrationAppStack(app, 'StudentCourseRegistrationAppStack', { config });

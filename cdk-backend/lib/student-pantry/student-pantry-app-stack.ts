@@ -3,12 +3,13 @@ import { Construct } from "constructs";
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
-import { defaultCorsPreflightOptions } from '../config';
+import { CustomStackProps, defaultCorsPreflightOptions } from '../config';
 
 
 export class StudentPantryAppStack extends cdk.Stack {
-    constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    constructor(scope: Construct, id: string, props: CustomStackProps) {
         super(scope, id, props);
+        const { config } = props;
 
         const layerArn = cdk.Fn.importValue('NodeLambdaLayerArn');
 
@@ -54,7 +55,8 @@ export class StudentPantryAppStack extends cdk.Stack {
             ],
             environment: {
                 TABLE_NAME: 'Products',
-                REGION: this.region
+                REGION: this.region,
+                ALLOW_ORIGINS: config.ALLOW_ORIGINS
             }
         })
 
@@ -69,7 +71,8 @@ export class StudentPantryAppStack extends cdk.Stack {
             ],
             environment: {
                 TABLE_NAME: 'Orders',
-                REGION: this.region
+                REGION: this.region,
+                ALLOW_ORIGINS: config.ALLOW_ORIGINS
             }
         })
 

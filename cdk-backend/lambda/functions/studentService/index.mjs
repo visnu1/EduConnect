@@ -1,16 +1,13 @@
 import mysql2 from 'mysql2/promise';
 import { v4 as uuid } from 'uuid';
 
-const HEADERS = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "*",
-    "Content-Type": "application/json"
-};
 
+const allowedOrigins = process.env.ALLOW_ORIGINS?.split(',') || [];
 const TABLES = new Set(['students', 'professors', 'courses', 'enrollment', 'majors', 'major_courses']);
 let connection;
 
 export const handler = async (event) => {
+    const origin = event.headers.origin;
     const { httpMethod, queryStringParameters, body } = event;
     const path = event.path.substring(1).toLowerCase();
 
@@ -21,26 +18,26 @@ export const handler = async (event) => {
 
         if (httpMethod === 'GET' && TABLES.has(path)) {
             const query = path === 'major_courses' ? getMajorCoursesQuery() : `SELECT * FROM ${path};`;
-            return await executeQuery(query);
+            return await executeQuery(query, origin);
         }
 
         if (httpMethod === 'GET' && path === 'students/search') {
             if (!queryStringParameters?.id) {
-                return response(400, { message: "Missing student ID in query parameters" });
+                return response(origin, 400, { message: "Missing student ID in query parameters" });
             }
             const queryProps = getStudentCoursesQuery(queryStringParameters.id);
-            return await executeQuery(queryProps.query, queryProps.params);
+            return await executeQuery(queryProps.query, origin, queryProps.params);
         }
 
         if (httpMethod === 'GET' && path === 'courses/search') {
             const search = queryStringParameters?.search || "";
             const queryProps = getCourseListQuery(search);
-            return await executeQuery(queryProps.query, queryProps.params);
+            return await executeQuery(queryProps.query, origin, queryProps.params);
         }
 
         if (httpMethod === 'POST' && path === 'courses') {
             if (!body) {
-                return response(400, { message: "Missing request body" });
+                return response(origin, 400, { message: "Missing request body" });
             }
             const enrollmentObj = JSON.parse(body);
             console.log("Enrollment Request:", enrollmentObj);
@@ -50,26 +47,26 @@ export const handler = async (event) => {
                 VALUES (?, ?, ?)
             `;
             const params = [enrollmentObj.studentId, enrollmentObj.courseId, enrollmentObj.enrolledSemester];
-            return await executeQuery(query, params);
+            return await executeQuery(query, origin, params);
         }
 
         console.warn(`No matching route found for ${httpMethod} ${path}`);
-        return response(404, { message: "Route or method not supported" });
+        return response(origin, 404, { message: "Route or method not supported" });
 
     } catch (error) {
         console.error("Error:", error);
-        return response(500, { message: "Internal server error", error: error.message });
+        return response(origin, 500, { message: "Internal server error", error: error.message });
     }
 };
 
 // fn to execute SQL query
-async function executeQuery(query, params = []) {
+async function executeQuery(query, origin, params = []) {
     try {
         const [results] = await connection.execute(query, params);
-        return response(200, { results });
+        return response(origin, 200, { results });
     } catch (error) {
         console.error("Query Execution Error:", error);
-        return response(500, { message: "Database query error", error: error.message });
+        return response(origin, 500, { message: "Database query error", error: error.message });
     }
 }
 
@@ -138,6 +135,14 @@ async function createConnection() {
     }
 }
 
-function response(statusCode, body) {
-    return { statusCode, headers: HEADERS, body: JSON.stringify(body) };
+function response(origin, statusCode, body) {
+    return {
+        statusCode,
+        body: JSON.stringify(body),
+        headers: {
+            "Access-Control-Allow-Origin": allowedOrigins.includes(origin) ? origin : "",
+            "Access-Control-Allow-Methods": "*",
+            "Content-Type": "application/json"
+        }
+    };
 }

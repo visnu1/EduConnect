@@ -84,6 +84,7 @@ export class StudentCourseRegistrationAppStack extends cdk.Stack {
                 RDS_PORT: rdsInstance.instanceEndpoint.port.toString(),
                 RDS_USERNAME: config.SQL_USERNAME,
                 RDS_PASSWORD: config.SQL_PSW,
+                ALLOW_ORIGINS: config.ALLOW_ORIGINS
             }
         })
 

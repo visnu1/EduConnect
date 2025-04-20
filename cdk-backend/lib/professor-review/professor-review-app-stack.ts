@@ -24,7 +24,8 @@ export class ProfessorReviewAppStack extends cdk.Stack {
             ],
             environment: {
                 REGION: this.region,
-                MONGODB_URL: config.MONGODB_URL
+                MONGODB_URL: config.MONGODB_URL,
+                ALLOW_ORIGINS: config.ALLOW_ORIGINS
             }
         })
 

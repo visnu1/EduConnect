@@ -8,6 +8,7 @@ type ConfigProps = {
     SQL_USERNAME: string;
     SQL_PSW: string;
     MONGODB_URL: string;
+    ALLOW_ORIGINS: string;
 };
 
 export type CustomStackProps = StackProps & {
@@ -20,6 +21,7 @@ export const getConfig = (): ConfigProps => ({
     SQL_USERNAME: process.env.SQL_USERNAME || "admin",
     SQL_PSW: process.env.SQL_DB_PSW || "password@123",
     MONGODB_URL: process.env.MONGODB_URL || "",
+    ALLOW_ORIGINS: process.env.ORIGINS || "*"
 });
 
 // Currently using it directly in the stack, becomes difficult for testing and writing mocks

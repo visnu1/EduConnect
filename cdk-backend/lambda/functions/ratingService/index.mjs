@@ -1,19 +1,16 @@
 import { ObjectId } from "mongodb";
 import connectToDatabase from './db.mjs';
 
-const HEADERS = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "*",
-    "Content-Type": "application/json"
-};
+const allowedOrigins = process.env.ALLOW_ORIGINS?.split(',') || [];
 
 export const handler = async (event) => {
+    const origin = event.headers.origin;
     const { httpMethod, pathParameters, queryStringParameters, body, path } = event;
 
     let db = await connectToDatabase();
     if (!db) {
         console.log('Database connection failed');
-        return response(500, { message: "Internal server error", error: "Unable to establish a connection to the database" });
+        return response(origin, 500, { message: "Internal server error", error: "Unable to establish a connection to the database" });
     }
 
     const questionsCollection = db.collection('questions');
@@ -25,10 +22,10 @@ export const handler = async (event) => {
                 console.log(`TESTING=> 'GET' /questions`);
 
                 const results = await questionsCollection.find({}).toArray();
-                return response(200, { message: "Questions queried successfully", results });
+                return response(origin, 200, { message: "Questions queried successfully", results });
 
             default:
-                return response(404, { message: "Route or method not supported" });
+                return response(origin, 404, { message: "Route or method not supported" });
         }
     }
 
@@ -36,7 +33,7 @@ export const handler = async (event) => {
         switch (httpMethod) {
             case 'GET':
                 if (!queryStringParameters || !queryStringParameters.id) {
-                    return response(400, { message: "Missing professor ID in query parameters" });
+                    return response(origin, 400, { message: "Missing professor ID in query parameters" });
                 }
 
                 const professorID = queryStringParameters.id;
@@ -54,11 +51,11 @@ export const handler = async (event) => {
                     }
                 ];
                 const results = await reviewsCollection.aggregate(pipeline).toArray();
-                return response(200, { message: "Reviews queried successfully", results });
+                return response(origin, 200, { message: "Reviews queried successfully", results });
 
             case 'POST':
                 if (!body) {
-                    return response(400, { message: "Missing request body" });
+                    return response(origin, 400, { message: "Missing request body" });
                 }
 
                 const parsedBody = JSON.parse(body);  // Renamed `body` to `parsedBody`
@@ -84,14 +81,22 @@ export const handler = async (event) => {
                     },
                     { upsert: true }
                 );
-                return response(200, { message: "Review saved successfully", results: updateResults });
+                return response(origin, 200, { message: "Review saved successfully", results: updateResults });
 
             default:
-                return response(404, { message: "Route or method not supported" });
+                return response(origin, 404, { message: "Route or method not supported" });
         }
     }
 };
 
-function response(statusCode, body) {
-    return { statusCode, headers: HEADERS, body: JSON.stringify(body) };
+function response(origin, statusCode, body) {
+    return {
+        statusCode,
+        body: JSON.stringify(body),
+        headers: {
+            "Access-Control-Allow-Origin": allowedOrigins.includes(origin) ? origin : "",
+            "Access-Control-Allow-Methods": "*",
+            "Content-Type": "application/json"
+        }
+    };
 }
