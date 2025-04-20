@@ -26,11 +26,12 @@ jobs:
             working-directory: frontend
             run: npm run build
 
+            # Allow "Read and write permissions" in settings > Actions
           - name: Deploying to Github Pages
             uses: peaceiris/actions-gh-pages@v3
             with: 
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                publish_dir: ./frontend/build
+                publish_dir: ./frontend/dist
 
           - name: Deployed Successfully! 🕺
             run: echo "frontend has been deployed without any errors"
