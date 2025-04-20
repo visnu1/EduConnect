@@ -13,7 +13,6 @@ const Login = () => {
     const [selectedUser, setSelectedUser] = useState<Student | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [students, setStudents] = useState<Student[]>([]);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchStudents = async () => {
