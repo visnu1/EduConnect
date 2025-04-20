@@ -3,6 +3,8 @@ import { Construct } from "constructs";
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
+import { defaultCorsPreflightOptions } from '../config';
+
 
 export class StudentPantryAppStack extends cdk.Stack {
     constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -82,28 +84,18 @@ export class StudentPantryAppStack extends cdk.Stack {
         });
         pantryApi.applyRemovalPolicy(cdk.RemovalPolicy.DESTROY);
 
-        const productsResource = pantryApi.root.addResource('products', {
-            defaultCorsPreflightOptions: {
-                allowOrigins: apigateway.Cors.ALL_ORIGINS,
-                allowMethods: apigateway.Cors.ALL_METHODS
-            }
-        });
+        const productsResource = pantryApi.root.addResource('products', { defaultCorsPreflightOptions });
         productsResource.addMethod('GET', new apigateway.LambdaIntegration(productsLambda, { proxy: true }));
 
         // manage single product through their ID
-        const productResource = productsResource.addResource('{productId}');
+        const productResource = productsResource.addResource('{productId}', { defaultCorsPreflightOptions });
         productResource.addMethod('GET', new apigateway.LambdaIntegration(productsLambda, { proxy: true }));
         productResource.addMethod('PUT', new apigateway.LambdaIntegration(productsLambda, { proxy: true }));
         productResource.addMethod('DELETE', new apigateway.LambdaIntegration(productsLambda, { proxy: true }));
 
 
         // Not defined default cors preflightOptions
-        const ordersResource = pantryApi.root.addResource('orders', {
-            defaultCorsPreflightOptions: {
-                allowOrigins: apigateway.Cors.ALL_ORIGINS,
-                allowMethods: apigateway.Cors.ALL_METHODS
-            }
-        });
+        const ordersResource = pantryApi.root.addResource('orders', { defaultCorsPreflightOptions });
 
         ordersResource.addMethod('GET', new apigateway.LambdaIntegration(ordersLambda, { proxy: true }));
         ordersResource.addMethod('POST', new apigateway.LambdaIntegration(ordersLambda, { proxy: true }));

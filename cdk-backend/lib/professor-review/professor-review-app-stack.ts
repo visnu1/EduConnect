@@ -2,8 +2,7 @@ import * as cdk from 'aws-cdk-lib';
 import { Construct } from "constructs";
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
-import { CustomStackProps } from '../config';
-
+import { CustomStackProps, defaultCorsPreflightOptions } from '../config';
 
 export class ProfessorReviewAppStack extends cdk.Stack {
     constructor(scope: Construct, id: string, props: CustomStackProps) {
@@ -38,21 +37,13 @@ export class ProfessorReviewAppStack extends cdk.Stack {
         profReviewApi.applyRemovalPolicy(cdk.RemovalPolicy.DESTROY);
 
         // APIs Managing questions
-        const questionsResource = profReviewApi.root.addResource('questions', {
-            defaultCorsPreflightOptions: {
-                allowOrigins: apigateway.Cors.ALL_ORIGINS,
-                allowMethods: apigateway.Cors.ALL_METHODS
-            }
-        });
+        const questionsResource = profReviewApi.root.addResource('questions', { defaultCorsPreflightOptions });
         questionsResource.addMethod('GET', new apigateway.LambdaIntegration(profReviewLambda, { proxy: true }));
 
         // APIs Managing reviews
         const reviewResource = profReviewApi.root.addResource('review', {
             // Required for pre-flight
-            defaultCorsPreflightOptions: {
-                allowOrigins: apigateway.Cors.ALL_ORIGINS,
-                allowMethods: apigateway.Cors.ALL_METHODS
-            }
+            defaultCorsPreflightOptions
         });
         reviewResource.addMethod('POST', new apigateway.LambdaIntegration(profReviewLambda, { proxy: true }));
         reviewResource.addMethod('GET', new apigateway.LambdaIntegration(profReviewLambda, { proxy: true }));

@@ -1,42 +1,49 @@
-# EduConnect Repository
+# EduConnect App (Microservice application)
+
+🌐 Live Demo: [https://educonnect.com](https://educonnect.com)  
 
 Welcome to the **EduConnect** repository! This repository is structured into multiple directories, each serving a specific purpose. Below is a detailed description of each directory and its contents.
 
 ---
 
+## Screenshots
+
+![Preview-1](./frontend/public/screenshot-1.png)
+![Preview-2](./frontend/public/screenshot-2.png)
+![Preview-3](./frontend/public/screenshot-3.png)
+![Preview-4](./frontend/public/screenshot-4.png)
+![Preview-5](./frontend/public/screenshot-5.png)
+
+---
+
 ## Directory Overview
 
-### **EduConnect**
-This directory contains the Angular application that powers the front-end of EduConnect.
+### **frontend**
+This directory contains the **React** application that powers the front-end of EduConnect.
 
 - **How to Get Started:**
-  1. Navigate to the `EduConnect` directory.
-  2. Install the dependencies using a package manager like `npm`:
+  1. Navigate to the `frontend` directory.
+  2. Install the dependencies:
      ```bash
      npm install
      ```
-  3. Start the application with the following command:
+  3. Start the application:
      ```bash
-     npm start
+     npm run dev
      ```
 
 ---
 
-### **Lambda**
-This directory contains all the AWS Lambda function code that handles the back-end logic and services.
+### **cdk-backend**
+This directory contains the **AWS CDK** codebase used for deploying backend infrastructure.
 
 - **How to Deploy:**
-  1. Navigate to the `Lambda` directory.
-  2. Deploy the functions to AWS Lambda using your preferred deployment method (e.g., AWS CLI, SAM, or a CI/CD pipeline).
-
----
-
-### **Sample-data**
-This directory contains sample data files that can be imported into your database.
-
-- **Usage Instructions:**
-  - Use these files to populate your database for testing or demonstration purposes.
-  - Ensure your database schema matches the sample data structure before importing.
+  1. Navigate to the `cdk-backend` directory.
+  2. Run the following command to deploy all stacks:
+     ```bash
+     cdk deploy --all
+     ```
+  3. Create a `.env` file and add your environment variables.
 
 ---
 
@@ -44,4 +51,3 @@ This directory contains sample data files that can be imported into your databas
 To get started with this repository, clone it using the following command:
 ```bash
 git clone https://github.com/visnu1/EduConnect.git
-```

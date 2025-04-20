@@ -1,0 +1,44 @@
+name: Deploy Edu-Connect frontend
+
+on:
+    push:
+        branches: 
+            - frontend
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout Repository
+            uses: actions/checkout@v3
+
+          - name: Setting Up Node Env
+            uses: actions/setup-node@v3
+            with:
+                node-version: 18
+
+          - name: Installing Dependancies 
+            working-directory: frontend
+            run: npm install
+
+          - name: Building frontend
+            working-directory: frontend
+            run: npm run build
+
+          - name: Deploying to Github Pages
+            working-directory: peaceiris/actions-gh-pages@v3
+            with: 
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./frontend/build
+
+          - name: Deployed Successfully! 🕺
+            run: echo "frontend has been deployed without any errors"
+
+
+
+
+
+
+
+ 

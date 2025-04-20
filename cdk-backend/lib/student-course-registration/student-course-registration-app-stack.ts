@@ -5,8 +5,7 @@ import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as custom_resources from 'aws-cdk-lib/custom-resources';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
-import { CustomStackProps } from '../config';
-
+import { CustomStackProps, defaultCorsPreflightOptions } from '../config';
 
 export class StudentCourseRegistrationAppStack extends cdk.Stack {
     constructor(scope: Construct, id: string, props: CustomStackProps) {
@@ -96,41 +95,41 @@ export class StudentCourseRegistrationAppStack extends cdk.Stack {
         courseRegApi.applyRemovalPolicy(cdk.RemovalPolicy.DESTROY);
 
         // APIs to manage all courses
-        const coursesResource = courseRegApi.root.addResource('courses');
+        const coursesResource = courseRegApi.root.addResource('courses', { defaultCorsPreflightOptions });
         coursesResource.addMethod('GET', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
         coursesResource.addMethod('POST', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
 
         /**
          *   Manage single course through their ID - Not implemented
          */
-        // const courseResource = coursesResource.addResource('{courseId}');
+        // const courseResource = coursesResource.addResource('{courseId}', { defaultCorsPreflightOptions });
         // courseResource.addMethod('GET', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
         // courseResource.addMethod('PUT', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
         // courseResource.addMethod('DELETE', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
 
         // seach through query parameters
-        const searchResource = coursesResource.addResource('search');
+        const searchResource = coursesResource.addResource('search', { defaultCorsPreflightOptions });
         searchResource.addMethod('GET', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
 
 
-        const enrollmentResource = courseRegApi.root.addResource('enrollment');
+        const enrollmentResource = courseRegApi.root.addResource('enrollment', { defaultCorsPreflightOptions });
         enrollmentResource.addMethod('GET', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
 
 
-        const majorCoursesResource = courseRegApi.root.addResource('major-courses');
+        const majorCoursesResource = courseRegApi.root.addResource('major-courses', { defaultCorsPreflightOptions });
         majorCoursesResource.addMethod('GET', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
 
-        const majorsResource = courseRegApi.root.addResource('majors');
+        const majorsResource = courseRegApi.root.addResource('majors', { defaultCorsPreflightOptions });
         majorsResource.addMethod('GET', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
 
-        const professorsResource = courseRegApi.root.addResource('professors');
+        const professorsResource = courseRegApi.root.addResource('professors', { defaultCorsPreflightOptions });
         professorsResource.addMethod('GET', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
 
-        const studentsResource = courseRegApi.root.addResource('students');
+        const studentsResource = courseRegApi.root.addResource('students', { defaultCorsPreflightOptions });
         studentsResource.addMethod('GET', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
 
         // seach through query parameters
-        const studentSearchResource = studentsResource.addResource('search');
+        const studentSearchResource = studentsResource.addResource('search', { defaultCorsPreflightOptions });
         studentSearchResource.addMethod('GET', new apigateway.LambdaIntegration(courseRegLambda, { proxy: true }));
 
         const seedDataLambda = new lambda.Function(this, 'CourseSeedDataLambda', {

@@ -1,4 +1,5 @@
-import { StackProps } from "aws-cdk-lib";
+import { StackProps, aws_apigateway } from "aws-cdk-lib";
+import { Cors } from 'aws-cdk-lib/aws-apigateway';
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -20,3 +21,9 @@ export const getConfig = (): ConfigProps => ({
     SQL_PSW: process.env.SQL_DB_PSW || "password@123",
     MONGODB_URL: process.env.MONGODB_URL || "",
 });
+
+// Currently using it directly in the stack, becomes difficult for testing and writing mocks
+export const defaultCorsPreflightOptions: aws_apigateway.CorsOptions = {
+    allowOrigins: process.env.ORIGINS?.split(',') || Cors.ALL_ORIGINS,
+    allowMethods: Cors.ALL_METHODS
+}
