@@ -1,8 +1,11 @@
 import { useRef, useState } from "react";
 import ReviewForm from "./ReviewForm";
 import StudentReviews from "./Reviews";
+import { Link } from "react-router-dom";
 import { professorReviews, registerProfessorReview } from "../../services/api";
 
+
+const courses = JSON.parse(localStorage.getItem("courses") as string) || [];
 
 const ProfessorReview = () => {
     const [selectedProfessor, setSelectedProfessor] = useState(null);
@@ -45,24 +48,32 @@ const ProfessorReview = () => {
                     <p className="text-lg text-gray-600">Help other students by sharing your experience</p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    {/* Left column - Review Form */}
-                    <div className="lg:col-span-7">
-                        <ReviewForm
-                            ref={formRef}
-                            selectedProfessor={selectedProfessor}
-                            onProfessorChange={handleProfessorChange}
-                            onSubmit={handleReviewSubmit}
-                            isSubmitting={isSubmitting}
-                            error={error}
-                        />
-                    </div>
+                {courses && courses.length > 0 ?
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        {/* Actual Review Form */}
+                        <div className="lg:col-span-7">
+                            <ReviewForm
+                                ref={formRef}
+                                selectedProfessor={selectedProfessor}
+                                onProfessorChange={handleProfessorChange}
+                                onSubmit={handleReviewSubmit}
+                                isSubmitting={isSubmitting}
+                                error={error}
+                            />
+                        </div>
 
-                    {/* Right column - Review List */}
-                    <div className="lg:col-span-5">
-                        <StudentReviews reviews={reviews} />
+                        {/* All Reviews */}
+                        <div className="lg:col-span-5">
+                            <StudentReviews reviews={reviews} />
+                        </div>
                     </div>
-                </div>
+                    : (
+                        <div className="text-center">
+                            <h2 className="text-xl">Yo, no courses registered yet. Gotta sign up for one to drop a review on that prof.</h2>
+                            <Link className="text-blue-500 underline" to={'/courses/registration'}>Register here</Link>
+                        </div>
+                    )
+                }
             </div>
         </div>
     );

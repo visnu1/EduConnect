@@ -2,6 +2,7 @@ import { forwardRef, useImperativeHandle, useRef, useState, useEffect } from "re
 import { CheckCircle, LoaderCircle } from "lucide-react";
 import { reviewQuestions } from "../../services/api";
 import Select from "../../components/ui/Select";
+import { useAuth } from "../../hooks/AuthProvider";
 
 interface ReviewQuestion {
     _id: string;
@@ -20,7 +21,6 @@ interface ReviewFormProps {
 }
 
 const courses = JSON.parse(localStorage.getItem("courses") as string) || [];
-const studentInfo = JSON.parse(localStorage.getItem("student") as string) || null;
 
 const RatingInput: React.FC<{
     question: ReviewQuestion;
@@ -68,7 +68,7 @@ const ReviewForm = forwardRef(({
     onSubmit,
     isSubmitting }: ReviewFormProps, ref) => {
 
-
+    const { user: studentInfo } = useAuth();
     const [formState, setFormState] = useState<{
         questions: ReviewQuestion[];
         ratings: { questionId: string, value: number }[];
@@ -123,7 +123,7 @@ const ReviewForm = forwardRef(({
             }
 
             const newReview = {
-                studentID: studentInfo.id,
+                studentID: studentInfo!.id,
                 title: formData.get('reviewTitle'),
                 courseID: courseId,
                 professorID: professorId,

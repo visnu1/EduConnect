@@ -33,14 +33,20 @@ const MyCourses = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {courses.length && courses.map((course: Course, index: number) => (
+                            {courses.length ? courses.map((course: Course, index: number) => (
                                 <tr key={course.courseId} className="border-t border-gray-300">
                                     <th className="p-3 font-medium" scope="row">{index + 1}</th>
                                     <td className="p-3">{course.courseName}</td>
                                     <td className="p-3">{course.professorName}</td>
                                     <td className="p-3">{course.day || 'Online'}</td>
                                 </tr>
-                            ))}
+                            )) :
+                                <tr className="border-t border-gray-300">
+                                    <td className="p-3 text-center text-gray-500" colSpan={4}>
+                                        No courses found or registered 😕
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
